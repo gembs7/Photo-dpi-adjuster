@@ -1,0 +1,34 @@
+---
+title: "testingAndrew"
+author: "Nick Gembs"
+date: "11/19/2023"
+output: html_document
+---
+
+
+```{r}
+install.packages("jpeg")
+library(jpeg)
+img <- readJPEG("C:/Users/Nick/Downloads/Picture3.jpg")
+img
+```
+
+```{r}
+
+for (i in c("7.1","7.2","7.3")){
+  imgpath = sprintf("C:/Users/Nick/Downloads/Figure%s.jpg", i)
+  img <- readJPEG(imgpath)
+  jpgpath = sprintf("C:/Users/Nick/Documents/Alzheimers/Growth_curve_ageinMonths/Andrew_Figure%s.jpg", i)
+  par(mar=c(0, 0, 0, 0), xpd = TRUE)
+  jpeg(filename = jpgpath, height = 8000, width = 8000, units = "px", res = 1200, type = "cairo")
+
+  if(exists("rasterImage")){
+      plot(1:2, type='n', axes = F, xlab = "", ylab = "")
+      rasterImage(img,1,1,2,2)
+  }
+  dev.off()
+  
+}
+
+```
+
